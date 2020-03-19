@@ -1,7 +1,12 @@
 import Vue from "vue";
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
 import App from './App.vue'
 
-let v = new Vue({
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+
+new Vue({
     el: "#app",
     template: "<App/>",
     components: {
