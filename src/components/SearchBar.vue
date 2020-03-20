@@ -40,6 +40,7 @@ export default Vue.extend({
         search: async function() {
             this.status = "searching"
             const results = await ApiService.search(this.text)
+            this.$emit('gotResults', results)
             this.status = "completed"
         }
     }

@@ -11,18 +11,27 @@
         </b-navbar>
 
         <b-row>
-            <b-col><!-- Search Component --></b-col>
+            <b-col><SearchBar v-on:gotResults="updateResults" /></b-col>
         </b-row>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue"
+import SearchBar from "./components/SearchBar.vue"
 
 export default Vue.extend({
     name: 'App',
     components: {
-
+        SearchBar,
+    },
+    data: () => ({
+        search_results: []
+    }),
+    methods: {
+        updateResults(results) {
+            this.search_results = results
+        }
     }
 
 })
