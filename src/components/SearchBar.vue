@@ -18,7 +18,7 @@
         <b-row v-if="status != 'init'">
             <b-col id="statusbar">
                 <span v-if="status == 'searching'">searching...</span>
-                <span v-if="status == 'completed'">Search complete! Found {{records_number}} record(s)</span>
+                <span v-if="status == 'completed'">Search complete and found {{records_number}} {{records_number > 1 || records_number === 0 ? "records" : "record"}}!</span>
             </b-col>
         </b-row>
     </div>
@@ -40,6 +40,7 @@ export default Vue.extend({
         search: async function() {
             this.status = "searching"
             const results = await ApiService.search(this.text)
+            this.records_number = results ? results.length : 0
             this.$emit('gotResults', results)
             this.status = "completed"
         }

@@ -15,7 +15,7 @@
         </b-row>
         <b-row>
             <b-col>
-                <SearchResultsList/>
+                <SearchResultsList :records="search_results"/>
             </b-col>
         </b-row>
     </div>
