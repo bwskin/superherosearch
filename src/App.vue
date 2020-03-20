@@ -11,11 +11,16 @@
         </b-navbar>
 
         <b-row>
-            <b-col><SearchBar v-on:gotResults="updateResults" /></b-col>
+            <b-col><SearchBar @searching="resetView" @gotResults="updateResults" /></b-col>
         </b-row>
         <b-row>
             <b-col>
                 <SearchResultsList :records="search_results"/>
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+                <ProfileView :profile="current_profile"/>
             </b-col>
         </b-row>
     </div>
@@ -25,20 +30,33 @@
 import Vue from "vue"
 import SearchBar from "./components/SearchBar.vue"
 import SearchResultsList from "./components/SearchResultsList.vue"
+import ProfileView from "./components/ProfileView.vue"
 
 export default Vue.extend({
     name: 'App',
     components: {
         SearchBar,
-        SearchResultsList
+        SearchResultsList,
+        ProfileView
     },
     data: () => ({
-        search_results: []
+        search_results: [],
+        current_profile: null
     }),
     methods: {
         updateResults(results) {
             this.search_results = results
+        },
+        viewProfile(profile) {
+            this.current_profile = profile
+        },
+        resetView() {
+            this.current_profile = null
+            this.search_results = []
         }
+    },
+    mounted() {
+        this.$root.$on("profileView", this.viewProfile)
     }
 
 })

@@ -39,6 +39,7 @@ export default Vue.extend({
     methods: {
         search: async function() {
             this.status = "searching"
+            this.$emit('searching')
             const results = await ApiService.search(this.text)
             this.records_number = results ? results.length : 0
             this.$emit('gotResults', results)

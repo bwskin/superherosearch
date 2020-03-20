@@ -4,7 +4,7 @@
             {{ record.name }}
         </b-col>
         <b-col cols="3">
-            <b-button>VIEW</b-button>
+            <b-button @click="view(record)">VIEW</b-button>
         </b-col>
     </b-row>
 </template>
@@ -17,7 +17,12 @@ export default Vue.extend({
     data: () => ({
         
     }),
-    props: ["record"]
+    props: ["record"],
+    methods: {
+        view(record) {
+            this.$root.$emit('profileView', record)
+        }
+    }
 })
 
 </script>
