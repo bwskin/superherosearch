@@ -13,17 +13,24 @@
         <b-row>
             <b-col><SearchBar v-on:gotResults="updateResults" /></b-col>
         </b-row>
+        <b-row>
+            <b-col>
+                <SearchResultsList/>
+            </b-col>
+        </b-row>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue"
 import SearchBar from "./components/SearchBar.vue"
+import SearchResultsList from "./components/SearchResultsList.vue"
 
 export default Vue.extend({
     name: 'App',
     components: {
         SearchBar,
+        SearchResultsList
     },
     data: () => ({
         search_results: []
