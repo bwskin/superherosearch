@@ -11,10 +11,10 @@
         </b-navbar>
 
         <b-row>
-            <b-col><SearchBar @searching="resetView" @gotResults="updateResults" /></b-col>
+            <b-col><SearchBar @searching="resetView"/></b-col>
         </b-row>
         <b-row>
-            <b-col>
+            <b-col cols="10" sm="8" offset="1" offset-sm="2">
                 <SearchResultsList :records="search_results"/>
             </b-col>
         </b-row>
@@ -57,6 +57,7 @@ export default Vue.extend({
     },
     mounted() {
         this.$root.$on("profileView", this.viewProfile)
+        this.$root.$on("gotResults", this.updateResults) 
     }
 
 })

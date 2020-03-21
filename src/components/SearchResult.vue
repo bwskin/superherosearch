@@ -1,12 +1,15 @@
 <template>
-    <b-row class="record-row">
-        <b-col cols="7" offset="1">
+    <b-tr>
+        <b-td>
             {{ record.name }}
-        </b-col>
-        <b-col cols="3">
+        </b-td>
+        <b-td>
+            {{ record.biography.publisher }}
+        </b-td>
+        <b-td>
             <b-button @click="view(record)">VIEW</b-button>
-        </b-col>
-    </b-row>
+        </b-td>
+    </b-tr>
 </template>
 
 <script lang="ts">

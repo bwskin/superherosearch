@@ -7,14 +7,16 @@
                 </h1>
             </b-col>
         </b-row>
+        <b-form @submit="search">
         <b-row>
-            <b-col cols="8" sm="7" offset-sm="1" md="6" offset-md="2">
+                <b-col cols="8" sm="7" md="6" lg="4" offset-sm="1" offset-md="2" offset-lg="3">
                 <b-form-input v-model="text" placeholder="Hero name..."></b-form-input>
             </b-col>
-            <b-col cols="4" sm="3" md="2">
-                <b-button v-on:click="search()">SEARCH!</b-button>
+                <b-col cols="4" sm="3" md="2" lg="2">
+                    <b-button type="submit">SEARCH!</b-button>
             </b-col>
         </b-row>
+        </b-form>
         <b-row v-if="status != 'init'">
             <b-col id="statusbar">
                 <span v-if="status == 'searching'">searching...</span>
@@ -37,12 +39,15 @@ export default Vue.extend({
     }),
 
     methods: {
-        search: async function() {
+        search: async function(event) {
+            if (event) {
+                event.preventDefault();
+            }
             this.status = "searching"
             this.$emit('searching')
             const results = await ApiService.search(this.text)
             this.records_number = results ? results.length : 0
-            this.$emit('gotResults', results)
+            this.$root.$emit('gotResults', results)
             this.status = "completed"
         }
     }
@@ -61,9 +66,5 @@ export default Vue.extend({
 
     #statusbar {
         text-align: center
-    }
-
-    .btn {
-        width: 100% !important;
     }
 </style>
