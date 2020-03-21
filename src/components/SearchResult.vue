@@ -7,7 +7,12 @@
             {{ record.biography.publisher }}
         </b-td>
         <b-td>
-            <b-button variant="outline-primary" @click="view(record)">VIEW</b-button>
+            <b-button
+                variant="outline-primary"
+                @click="view(record)"
+            >
+                VIEW
+            </b-button>
         </b-td>
     </b-tr>
 </template>
@@ -17,10 +22,15 @@ import Vue from "vue"
 
 export default Vue.extend({
     name: 'SearchResult',
+    props: {
+        record : {
+            type: Object,
+            default: () => {}
+        }
+    },
     data: () => ({
         
     }),
-    props: ["record"],
     methods: {
         view(record) {
             this.$root.$emit('profileView', record)

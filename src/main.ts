@@ -8,8 +8,8 @@ Vue.use(IconsPlugin)
 
 new Vue({
     el: "#app",
-    template: "<App/>",
     components: {
         App
-    }
+    },
+    template: "<App/>"
 });
