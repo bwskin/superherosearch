@@ -60,6 +60,14 @@ var config = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 8080,
+        proxy: {
+            "/api" : {
+                target:"http://superheroapi.com",
+                headers: {
+                    'Host' : "superheroapi.com"
+                }
+            }
+        }
     }
 };
 
