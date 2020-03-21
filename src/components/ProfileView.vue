@@ -2,35 +2,40 @@
     <div v-if="profile" >
         <b-row class="profile-container">
             <b-col class="profile" cols="12" lg="10" xl="8" offset-lg="1" offset-xl="2">
-                <b-row class="record-row">
-                    <b-col cols="7" lg="6">
+                <b-row v-if="window.width < 576">
+                    <b-col cols="12">
+                        <div class="name">{{profile.name}}</div>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col cols="12" sm="6" lg="6" v-bind:style="{ padding: (window.width < 576 ? '5px' : '0') }">
                         <div class="img" v-bind:style="{ backgroundImage: 'url(' + profile.image.url + ')' }">    
                         </div>
                     </b-col>
-                    <b-col cols="5" lg="6">
-                        <div class="name">{{profile.name}}</div>
+                    <b-col cols="12" sm="6" lg="6">
+                        <div class="name" v-if="window.width >= 576">{{profile.name}}</div>
                         <b-row class="bio-field">
-                            <b-col cols="12" sm="6" class="label">Publisher:</b-col>
-                            <b-col cols="12" sm="6">{{profile.biography.publisher}}</b-col>
+                            <b-col cols="6" class="label">Publisher:</b-col>
+                            <b-col cols="6">{{profile.biography.publisher}}</b-col>
                         </b-row>            <b-row class="bio-field">
-                            <b-col cols="12" sm="6" class="label">Full name:</b-col>
-                            <b-col cols="12" sm="6">{{profile.biography['full-name']}}</b-col>
+                            <b-col cols="6" class="label">Full name:</b-col>
+                            <b-col cols="6">{{profile.biography['full-name']}}</b-col>
                         </b-row>
                         <b-row class="bio-field">
-                            <b-col cols="12" sm="6" class="label">Place of birth:</b-col>
-                            <b-col cols="12" sm="6">{{profile.biography['place-of-birth']}}</b-col>
+                            <b-col cols="6" class="label">Place of birth:</b-col>
+                            <b-col cols="6">{{profile.biography['place-of-birth']}}</b-col>
                         </b-row>
                         <b-row class="bio-field">
-                            <b-col cols="12" sm="6" class="label">Gender:</b-col>
-                            <b-col cols="12" sm="6">{{profile.appearance.gender}}</b-col>
+                            <b-col cols="6" class="label">Gender:</b-col>
+                            <b-col cols="6">{{profile.appearance.gender}}</b-col>
                         </b-row>
                         <b-row class="bio-field">
-                            <b-col cols="12" sm="6" class="label">Race:</b-col>
-                            <b-col cols="12" sm="6">{{profile.appearance.race}}</b-col>
+                            <b-col cols="6" class="label">Race:</b-col>
+                            <b-col cols="6">{{profile.appearance.race}}</b-col>
                         </b-row>
                         <b-row class="bio-field">
-                            <b-col cols="12" sm="6" class="label">Height:</b-col>
-                            <b-col cols="12" sm="6"><div v-for="height in profile.appearance.height">{{ height }}</div></b-col>
+                            <b-col cols="6" class="label">Height:</b-col>
+                            <b-col cols="6"><div v-for="height in profile.appearance.height">{{ height }}</div></b-col>
                         </b-row>
                         <b-row class="bio-field graph-bio">
                             <StatsGraph v-if="window.width >= 768" :stats="stats" />
@@ -116,7 +121,8 @@ export default Vue.extend({
         min-height: 400px;
         width: 100%;
         background-position: center; 
-        height: 100%
+        height: 100%;
+        background-size: 100%;
     }
 
     .graph {

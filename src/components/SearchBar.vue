@@ -8,7 +8,7 @@
                     <b-form-input v-model="text" placeholder="Hero name..."></b-form-input>
                 </b-col>
                 <b-col cols="4" sm="3" md="2" lg="2">
-                    <b-button variant="primary" type="submit">SEARCH!</b-button>
+                    <b-button variant="primary" type="submit">Search</b-button>
                 </b-col>
             </b-row>
         </b-form>

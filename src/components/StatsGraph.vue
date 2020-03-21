@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="graph-root">
         <svg width="100%" height="400" viewBox="0 0 400 400">
             <g transform="translate(25,25)">
                 <g transform="translate(25,25)">
@@ -54,5 +54,9 @@ export default Vue.extend({
     svg {
         display: block;
         margin: 0 auto;
+    }
+
+    .graph-root {
+        width: 100%
     }
 </style>
