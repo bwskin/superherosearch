@@ -5,9 +5,9 @@
                 class="profile"
                 cols="12"
                 lg="10"
-                xl="8"
+                xl="6"
                 offset-lg="1"
-                offset-xl="2"
+                offset-xl="3"
             >
                 <b-row v-if="window.width < 576">
                     <b-col cols="12">
@@ -21,7 +21,7 @@
                         cols="12"
                         sm="6"
                         lg="6"
-                        :style="{ padding: (window.width < 576 ? '5px' : '0') }"
+                        :style="{ padding: (window.width < 576 ? '5px' : '15px'), 'padding-right': (window.width < 576 ? '5px' : 0) }"
                     >
                         <div
                             class="img"
@@ -206,7 +206,7 @@ export default Vue.extend({
         width: 100%;
         background-position: center; 
         height: 100%;
-        background-size: 100%;
+        background-size: cover;
     }
 
     .graph {
