@@ -33,13 +33,13 @@
                     <b-col cols="12" sm="6"><div v-for="height in profile.appearance.height">{{ height }}</div></b-col>
                 </b-row>
                 <b-row class="bio-field graph-bio">
-                    <StatsGraph class="d-none d-md-block" :stats="stats" />
+                    <StatsGraph v-if="window.width >= 768" :stats="stats" />
                 </b-row>
             </b-col>
         </b-row>
         <b-row>
             <b-col class="graph">
-                <StatsGraph class="d-md-none" :stats="stats" />
+                <StatsGraph v-if="window.width < 768" :stats="stats" />
             </b-col>
         </b-row>
     </div>
@@ -55,7 +55,9 @@ export default Vue.extend({
         StatsGraph
     },
     data: () => ({
-        
+        window: {
+            width: 0
+        }
     }),
     props: ["profile"],
     computed: {
@@ -70,6 +72,18 @@ export default Vue.extend({
                 stats.push(this.profile.powerstats.combat)
             }
             return stats
+        }
+    },
+    created() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
+    },
+    methods: {
+        handleResize() {
+            this.window.width = window.innerWidth;
         }
     }
 })
