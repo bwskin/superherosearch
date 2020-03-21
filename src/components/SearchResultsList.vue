@@ -21,7 +21,7 @@
                     </b-tr>
                 </b-thead>
                 <b-tbody>
-        <SearchResult v-for="record in records" :record="record"/>
+                    <SearchResult v-for="record in records" :record="record"/>
                 </b-tbody>
             </b-table-simple>
         </b-collapse>
@@ -56,7 +56,7 @@ export default Vue.extend({
             this.visible = true;
         }
     }
-        
+
 })
 
 </script>

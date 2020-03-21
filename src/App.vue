@@ -1,20 +1,13 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="info">
-            <b-navbar-brand href="#">Superhero search!</b-navbar-brand>
-            <b-navbar-toggle target="nav-collapse"/>
-            <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav class="ml-auto">
-                <b-button href="https://github.com/NaotoNomura/superherosearch" size="sm" type="submit">GitHub</b-button>
-            </b-navbar-nav>
-            </b-collapse>
+        <b-button class="github-button" href="https://github.com/NaotoNomura/superherosearch" size="sm" type="submit">GitHub</b-button>
         </b-navbar>
-
+        <img id="logo" src="../assets/logo.png">
         <b-row>
             <b-col><SearchBar @searching="resetView"/></b-col>
         </b-row>
         <b-row>
-            <b-col cols="10" sm="8" offset="1" offset-sm="2">
+            <b-col cols="10" sm="8" lg="6" offset="1" offset-sm="2" offset-lg="3">
                 <SearchResultsList :records="search_results"/>
             </b-col>
         </b-row>
@@ -67,4 +60,30 @@ export default Vue.extend({
 <style module>
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 @import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
+</style>
+
+<style>
+    .btn {
+        width: 100%;
+    }
+    #logo {
+        display: block;
+        width: 100%;
+        max-width: 800px;
+        margin: 2em auto;
+    }
+    .github-button {
+        width: 7em;
+        position: absolute;
+        top: 10px;
+        right:10px;
+    }
+
+    html, body {
+        width: 100%;
+    }
+
+    body {
+        padding: 0 15px;
+    }
 </style>

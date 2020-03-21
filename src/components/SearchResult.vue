@@ -7,7 +7,7 @@
             {{ record.biography.publisher }}
         </b-td>
         <b-td>
-            <b-button @click="view(record)">VIEW</b-button>
+            <b-button variant="outline-primary" @click="view(record)">VIEW</b-button>
         </b-td>
     </b-tr>
 </template>

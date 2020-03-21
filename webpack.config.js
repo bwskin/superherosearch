@@ -34,7 +34,9 @@ var config = {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[ext]?[hash]'
+                    name: '[name].[ext]',
+                    outputPath: 'images',
+                    esModule: false,
                 }
             }
         ]

@@ -1,21 +1,16 @@
 <template>
     <div id="searchbar">
         <b-row>
-            <b-col id="header">
-                <h1>
-                    Search your superhero!
-                </h1>
-            </b-col>
         </b-row>
         <b-form @submit="search">
-        <b-row>
+            <b-row>
                 <b-col cols="8" sm="7" md="6" lg="4" offset-sm="1" offset-md="2" offset-lg="3">
-                <b-form-input v-model="text" placeholder="Hero name..."></b-form-input>
-            </b-col>
+                    <b-form-input v-model="text" placeholder="Hero name..."></b-form-input>
+                </b-col>
                 <b-col cols="4" sm="3" md="2" lg="2">
-                    <b-button type="submit">SEARCH!</b-button>
-            </b-col>
-        </b-row>
+                    <b-button variant="primary" type="submit">SEARCH!</b-button>
+                </b-col>
+            </b-row>
         </b-form>
         <b-row v-if="status != 'init'">
             <b-col id="statusbar">
@@ -38,6 +33,10 @@ export default Vue.extend({
         records_number: 0,
     }),
 
+    // mounted() {
+    //     this.search()
+    // },
+
     methods: {
         search: async function(event) {
             if (event) {
@@ -58,10 +57,6 @@ export default Vue.extend({
 <style>
     #searchbar {
         padding: 10px;
-    }
-
-    #header {
-        text-align: center
     }
 
     #statusbar {
