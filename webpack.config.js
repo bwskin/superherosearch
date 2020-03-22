@@ -20,12 +20,32 @@ module.exports = (env, options) => ({
         rules: [
             {
                 test: /\.vue$/,
-                loader: "vue-loader"
+                use: [
+                    {
+                        loader: "vue-loader",
+                    },
+                    {
+                        loader: "eslint-loader",
+                        options: {
+                            failOnError: true
+                        }
+                    }
+                ]
             },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: ["babel-loader", "eslint-loader"]
+                use: [
+                    {
+                        loader: "babel-loader",
+                    },
+                    {
+                        loader: "eslint-loader",
+                        options: {
+                            failOnError: true
+                        }
+                    }
+                ]
             },
             {
                 test: /\.css$/,
