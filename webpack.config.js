@@ -10,7 +10,7 @@ module.exports = (env, options) => ({
     mode: options.mode || "development",
     context: __dirname + '/src',
     entry: {
-        app: ['babel-polyfill', './main.ts'],
+        app: ['whatwg-fetch', 'babel-polyfill', './main.ts'],
     },
     output: {
         path: __dirname + '/dist',
