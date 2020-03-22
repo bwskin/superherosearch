@@ -39,69 +39,87 @@
                         >
                             {{ profile.name }}
                         </div>
-                        <b-row class="bio-field">
+                        <b-row class="bio-field publisher">
                             <b-col
                                 cols="6"
                                 class="label"
                             >
                                 Publisher:
                             </b-col>
-                            <b-col cols="6">
+                            <b-col
+                                cols="6"
+                                class="value"
+                            >
                                 {{ profile.biography.publisher }}
                             </b-col>
                         </b-row>
-                        <b-row class="bio-field">
+                        <b-row class="bio-field full-name">
                             <b-col
                                 cols="6"
                                 class="label"
                             >
                                 Full name:
                             </b-col>
-                            <b-col cols="6">
+                            <b-col
+                                cols="6"
+                                class="value"
+                            >
                                 {{ profile.biography['full-name'] }}
                             </b-col>
                         </b-row>
-                        <b-row class="bio-field">
+                        <b-row class="bio-field place-of-birth">
                             <b-col
                                 cols="6"
                                 class="label"
                             >
                                 Place of birth:
                             </b-col>
-                            <b-col cols="6">
+                            <b-col
+                                cols="6"
+                                class="value"
+                            >
                                 {{ profile.biography['place-of-birth'] }}
                             </b-col>
                         </b-row>
-                        <b-row class="bio-field">
+                        <b-row class="bio-field gender">
                             <b-col
                                 cols="6"
                                 class="label"
                             >
                                 Gender:
                             </b-col>
-                            <b-col cols="6">
+                            <b-col
+                                cols="6"
+                                class="value"
+                            >
                                 {{ profile.appearance.gender }}
                             </b-col>
                         </b-row>
-                        <b-row class="bio-field">
+                        <b-row class="bio-field race">
                             <b-col
                                 cols="6"
                                 class="label"
                             >
                                 Race:
                             </b-col>
-                            <b-col cols="6">
+                            <b-col
+                                cols="6"
+                                class="value"
+                            >
                                 {{ profile.appearance.race }}
                             </b-col>
                         </b-row>
-                        <b-row class="bio-field">
+                        <b-row class="bio-field height">
                             <b-col
                                 cols="6"
                                 class="label"
                             >
                                 Height:
                             </b-col>
-                            <b-col cols="6">
+                            <b-col
+                                cols="6"
+                                class="value"
+                            >
                                 <div
                                     v-for="(height, index) in profile.appearance.height"
                                     :key="index"
@@ -182,22 +200,12 @@ export default Vue.extend({
 </script>
 
 <style>
-    .profile-img {
-        width:100%;
-        /*height:250px;*/
-        object-fit: cover;
-    }
-
     .bio-field .label {
         font-weight: bold;
     }
 
     .name {
         font-size: xx-large;
-    }
-
-    .publisher {
-        font-size: x-small;
     }
 
     .img {

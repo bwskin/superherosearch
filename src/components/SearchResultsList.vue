@@ -1,11 +1,14 @@
 <template>
     <div v-if="records.length > 0">
         <div class="expander">
-            <b-button @click="visible = !visible">
+            <b-button @click="toggle()">
                 {{ visible ? "Collapse results" : "Expand results" }}
             </b-button>
             <br>
-            <span v-if="!visible">...</span>
+            <span
+                v-if="!visible"
+                class="expand-indicator"
+            >...</span>
         </div>
         <b-collapse v-model="visible">
             <b-table-simple>

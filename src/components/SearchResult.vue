@@ -1,17 +1,18 @@
 <template>
     <b-tr>
-        <b-td>
+        <b-td class="sr-name">
             {{ record.name }}
         </b-td>
-        <b-td>
+        <b-td class="sr-publisher">
             {{ record.biography.publisher }}
         </b-td>
         <b-td>
             <b-button
                 variant="outline-primary"
-                @click="view(record)"
+                class="sr-view"
+                @click="view()"
             >
-                VIEW
+                View
             </b-button>
         </b-td>
     </b-tr>
@@ -32,8 +33,8 @@ export default Vue.extend({
         
     }),
     methods: {
-        view(record) {
-            this.$root.$emit('profileView', record)
+        view() {
+            this.$root.$emit('profileView', this.record)
         }
     }
 })

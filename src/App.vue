@@ -24,12 +24,12 @@
                 offset-sm="2"
                 offset-lg="3"
             >
-                <SearchResultsList :records="search_results" />
+                <SearchResultsList :records="searchResults" />
             </b-col>
         </b-row>
         <b-row>
             <b-col>
-                <ProfileView :profile="current_profile" />
+                <ProfileView :profile="currentProfile" />
             </b-col>
         </b-row>
     </div>
@@ -49,8 +49,8 @@ export default Vue.extend({
         ProfileView
     },
     data: () => ({
-        search_results: [],
-        current_profile: null
+        searchResults: [],
+        currentProfile: null
     }),
     mounted() {
         this.$root.$on("profileView", this.viewProfile)
@@ -58,14 +58,14 @@ export default Vue.extend({
     },
     methods: {
         updateResults(results) {
-            this.search_results = results
+            this.searchResults = results
         },
         viewProfile(profile) {
-            this.current_profile = profile
+            this.currentProfile = profile
         },
         resetView() {
-            this.current_profile = null
-            this.search_results = []
+            this.currentProfile = null
+            this.searchResults = []
         }
     }
 

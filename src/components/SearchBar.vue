@@ -1,5 +1,5 @@
 <template>
-    <div id="searchbar">
+    <div class="searchbar">
         <b-row />
         <b-form @submit="search">
             <b-row>
@@ -33,9 +33,9 @@
             </b-row>
         </b-form>
         <b-row v-if="status != 'init'">
-            <b-col id="statusbar">
+            <b-col class="statusbar">
                 <span v-if="status == 'searching'">searching...</span>
-                <span v-if="status == 'completed'">Search complete and found {{ records_number }} {{ records_number > 1 || records_number === 0 ? "records" : "record" }}!</span>
+                <span v-if="status == 'completed'">Search complete and found {{ recordsNumber }} {{ recordsNumber > 1 || recordsNumber === 0 ? "records" : "record" }}!</span>
             </b-col>
         </b-row>
     </div>
@@ -50,12 +50,8 @@ export default Vue.extend({
     data: () => ({
         text: "",
         status: "init",
-        records_number: 0,
+        recordsNumber: 0,
     }),
-
-    // mounted() {
-    //     this.search()
-    // },
 
     methods: {
         search: async function(event) {
@@ -65,7 +61,7 @@ export default Vue.extend({
             this.status = "searching"
             this.$emit('searching')
             const results = await ApiService.search(this.text)
-            this.records_number = results ? results.length : 0
+            this.recordsNumber = results ? results.length : 0
             this.$root.$emit('gotResults', results)
             this.status = "completed"
         }
@@ -75,11 +71,11 @@ export default Vue.extend({
 </script>
 
 <style>
-    #searchbar {
+    .searchbar {
         padding: 10px;
     }
 
-    #statusbar {
+    .statusbar {
         text-align: center
     }
 </style>
