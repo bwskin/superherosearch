@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "webpack --progress && webpack-dev-server",
     "build": "webpack --progress",
+    "build:prod": "webpack --progress --mode production",
     "lint": "eslint --ext ts,vue ./src",
     "test": "jest"
   },

@@ -6,8 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-var config = {
-    mode: "production",
+module.exports = (env, options) => ({
+    mode: options.mode || "development",
     context: __dirname + '/src',
     entry: {
         app: ['babel-polyfill', './main.ts'],
@@ -30,7 +30,7 @@ var config = {
             {
                 test: /\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    (options.mode === "production" ? MiniCssExtractPlugin.loader: 'vue-style-loader'),
                     'css-loader'
                 ]
             },
@@ -79,7 +79,4 @@ var config = {
             }
         }
     }
-};
-
-
-module.exports = config;
+})
