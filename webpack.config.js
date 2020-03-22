@@ -2,8 +2,12 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 var config = {
+    mode: "production",
     context: __dirname + '/src',
     entry: {
         app: ['babel-polyfill', './main.ts'],
@@ -26,7 +30,7 @@ var config = {
             {
                 test: /\.css$/,
                 use: [
-                    'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
             },
@@ -54,8 +58,14 @@ var config = {
             title: 'Superhero Search!',
             filename: 'index.html',
             template: 'main.html'
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'style.css'
         })
     ],
+    optimization: {
+        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
